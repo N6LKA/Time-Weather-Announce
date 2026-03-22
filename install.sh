@@ -4,7 +4,7 @@
 # https://github.com/N6LKA/Time-Weather-Announce
 #
 # Originally by Freddie Mac (KD5FMU) and Jory A. Pratt (W5GLE)
-# Adapted for ASL3 by Larry K. Aycock (N6LKA)
+# Modified and updated by Larry K. Aycock (N6LKA)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

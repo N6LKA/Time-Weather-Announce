@@ -82,8 +82,11 @@ Edit `/etc/asterisk/local/weather.ini` to customize behavior:
 
 ## Credits
 
-Originally created by **Freddie Mac (KD5FMU)** and enhanced by **Jory A. Pratt (W5GLE)**.
-Adapted for AllStar by **Larry K. Aycock (N6LKA)**.
+| Script | Author(s) |
+|---|---|
+| `saytime.pl` | D. Crompton (WA3DSP) — original author |
+| `weather.sh` | Jory A. Pratt (W5GLE), based on original work by D. Crompton (WA3DSP), modified by Joe (KD2NFC) |
+| `install.sh` | Freddie Mac (KD5FMU) and Jory A. Pratt (W5GLE) — original; modified and updated by Larry K. Aycock (N6LKA) |
 
 ---
 
