@@ -1,45 +1,94 @@
-![HRC Logo](https://github.com/KD5FMU/Time-Weather-Announce/blob/main/TimeWeather2.png)
+# Time and Weather Announcement
 
-# Time and Weather Conditions Announcement
-This script file will install the needed files and scripts to initiate the Top of the Hour Time and Weather Condition Announcement moved over from HamVoIP AllStar Software. Here is how you install it.
+![Release Version](https://img.shields.io/github/v/release/N6LKA/Time-Weather-Announce?label=Version&color=f15d24)
+![Release Date](https://img.shields.io/github/release-date/N6LKA/Time-Weather-Announce?label=Released&color=f15d24)
+![Hits](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FN6LKA%2FTime-Weather-Announce.json&label=Hits&color=f15d24)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/N6LKA/Time-Weather-Announce?label=Size&color=f15d24)
 
+<img src="TimeWeather.png" alt="Time and Weather Logo" height="120">
 
+---
 
-Goto the $HOME directory
+An automated top-of-the-hour time and current weather conditions announcement system for [ASL3](https://allstarlink.org/) (AllStar Link 3) nodes. Originally developed for HamVoIP AllStar, ported and enhanced for ASL3.
+
+Supports US ZIP codes, ICAO airport codes, Canadian postal codes, and international locations. Weather data is sourced from NOAA METAR and Open-Meteo.
+
+---
+
+## Requirements
+
+- ASL3 installed and configured
+- `curl` — pre-installed on most ASL3 systems
+- `perl` — pre-installed on most ASL3 systems
+- `bc`, `zip`, `plocate` — installed automatically during setup
+
+---
+
+## Installation & Updates
+
+Run the following command as root or with sudo for both fresh installs and updates:
+
+```bash
+bash <(curl -fsSL -H "Cache-Control: no-cache" https://raw.githubusercontent.com/N6LKA/Time-Weather-Announce/main/install.sh)
 ```
-cd
+
+The installer will prompt you for:
+- **ZIP code or Airport/ICAO code** — e.g. `90210` or `KJFK`
+- **ASL3 node number** — your AllStar node number
+
+**Fresh install:** Downloads and installs all scripts and sound files, creates the configuration file, and adds an hourly cron job.
+
+**Existing install detected:** Pre-fills your current location and node number. Press Enter to keep them or type new values, then refreshes all scripts and sound files.
+
+---
+
+## What It Does
+
+- Announces the current local time at the top of every hour
+- Retrieves current weather conditions via NOAA METAR or Open-Meteo
+- Plays announcements using pre-recorded GSM audio files
+- Runs automatically via cron — no manual interaction required after setup
+
+---
+
+## Testing
+
+After installation, test your setup manually:
+
+```bash
+/usr/local/sbin/saytime.pl <ZIP_or_AIRPORT> <NodeNumber>
 ```
 
-Then Download this file
-```
-sudo wget https://raw.githubusercontent.com/KD5FMU/Time-Weather-Announce/refs/heads/main/time_weather.sh
-```
-and then make it executable.
-
-```
-sudo chmod +x time_weather.sh
+Example:
+```bash
+/usr/local/sbin/saytime.pl 90210 123456
+/usr/local/sbin/saytime.pl KJFK 123456
 ```
 
-then run it
-```
-sudo ./time_weather.sh ZIP/AIRPORTCODE NODENUMBER
-```
+---
 
-Your can test the node by running this line
+## Configuration
 
-```
-sudo saytime.pl ZIP/AIRPORTCODE NODENUMBER
-```
+Edit `/etc/asterisk/local/weather.ini` to customize behavior:
 
-make the appropriate changes to your ZIP/AIRPORTCODE and NODENUMBER and then hit enter, if all went well you will hear the time and weather conditions announce.
+| Setting | Default | Description |
+|---|---|---|
+| `Temperature_mode` | `F` | `F` for Fahrenheit, `C` for Celsius |
+| `process_condition` | `YES` | Announce weather conditions (cloudy, rain, etc.) |
+| `default_country` | `us` | Country code for postal code lookups |
+| `DEFAULT_PROVIDER` | `auto` | Weather source: `auto`, `metar`, or `openmeteo` |
 
-You can use this video as a reference.
-https://youtu.be/DJ9w9pNzkyo?si=BcNo6ONEnXvT-KM0
+---
 
-It is my hope that you find this script file very helpful and useful.
+## Credits
 
-73 DE KD5FMU
+Originally created by **Freddie Mac (KD5FMU)** and enhanced by **Jory A. Pratt (W5GLE)**.
+Adapted for ASL3 by **Larry K. Aycock (N6LKA)**.
 
-"Ham On Y'all!"
+---
 
+## License
 
+GNU General Public License version 2 (GPL-2.0)
+
+See [LICENSE](LICENSE) for details.
