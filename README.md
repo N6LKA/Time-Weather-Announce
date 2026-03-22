@@ -9,7 +9,7 @@
 
 ---
 
-An automated top-of-the-hour time and current weather conditions announcement system for [ASL3](https://allstarlink.org/) (AllStar Link 3) nodes. Originally developed for HamVoIP AllStar, ported and enhanced for ASL3.
+An automated top-of-the-hour time and current weather conditions announcement system for [AllStar](https://allstarlink.org/) nodes, including ASL3 and HamVoIP. Originally developed for HamVoIP AllStar.
 
 Supports US ZIP codes, ICAO airport codes, Canadian postal codes, and international locations. Weather data is sourced from NOAA METAR and Open-Meteo.
 
@@ -17,9 +17,9 @@ Supports US ZIP codes, ICAO airport codes, Canadian postal codes, and internatio
 
 ## Requirements
 
-- ASL3 installed and configured
-- `curl` — pre-installed on most ASL3 systems
-- `perl` — pre-installed on most ASL3 systems
+- AllStar (ASL3 or HamVoIP) installed and configured
+- `curl` — pre-installed on most AllStar systems
+- `perl` — pre-installed on most AllStar systems
 - `bc`, `zip`, `plocate` — installed automatically during setup
 
 ---
@@ -34,7 +34,7 @@ bash <(curl -fsSL -H "Cache-Control: no-cache" https://raw.githubusercontent.com
 
 The installer will prompt you for:
 - **ZIP code or Airport/ICAO code** — e.g. `90210` or `KJFK`
-- **ASL3 node number** — your AllStar node number
+- **AllStar node number** — your AllStar node number
 
 **Fresh install:** Downloads and installs all scripts and sound files, creates the configuration file, and adds an hourly cron job.
 
@@ -83,7 +83,7 @@ Edit `/etc/asterisk/local/weather.ini` to customize behavior:
 ## Credits
 
 Originally created by **Freddie Mac (KD5FMU)** and enhanced by **Jory A. Pratt (W5GLE)**.
-Adapted for ASL3 by **Larry K. Aycock (N6LKA)**.
+Adapted for AllStar by **Larry K. Aycock (N6LKA)**.
 
 ---
 
